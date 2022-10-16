@@ -1,0 +1,21 @@
+version: '3.1'
+services:
+
+  # PostgreSQL Database Server
+  peppermint_postgresql_server_v13_0:
+    container_name: peppermint_postgresql_server_v13_0
+    image: postgres:13.0
+    environment:
+      POSTGRES_DB: peppermint_db
+      POSTGRES_USER: peppermint
+      POSTGRES_PASSWORD: kVw0iODYUtXQkqPdNwpYx4YfvRQdLEDb
+    ports:
+      - 15432:5432
+    volumes:
+      - ~/peppermint_dbdata:/var/lib/postgresql/data
+    networks:
+      - PEPPERMINIT-SYSTEM-NETWORK
+
+networks:
+  PEPPERMINIT-SYSTEM-NETWORK:
+    external: true

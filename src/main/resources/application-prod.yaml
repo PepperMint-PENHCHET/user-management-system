@@ -1,0 +1,44 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://192.168.109.129:15432/peppermint_db
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      driver-class-name: org.postgresql.Driver
+      username: peppermint
+      password: kVw0iODYUtXQkqPdNwpYx4YfvRQdLEDb
+      pool-name: SpringBootHikariCP # HikariCP
+      maximum-pool-size: 100
+      minimum-idle: 5
+      max-lifetime: 300000
+      connection-timeout: 300000
+      initialization-fail-timeout: 0
+    dbcp2:
+      pool-prepared-statements: true
+    username: peppermint
+    password: kVw0iODYUtXQkqPdNwpYx4YfvRQdLEDb
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+    properties:
+      org.hibernate.envers.default_schema: audit
+    show-sql: false
+    open-in-view: false
+  flyway:
+    enabled: false
+
+
+  jackson:
+    serialization:
+      FAIL_ON_EMPTY_BEANS: false
+
+logging:
+  pattern:
+    file: "%clr(%d{yyyy-MM-dd HH:mm:ss.SSS}){faint} %clr(%5p) %clr(${PID}){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n%wEx"
+  file:
+    name: "/root/logs/backoffice-api-service.log"
+  logback:
+    rollingpolicy:
+      file-name-pattern: "/root/logs/archived/backoffice-api-service.%d{yyyy-MM-dd}.%i.log"
+      max-history: 60
+      max-file-size: 10MB
